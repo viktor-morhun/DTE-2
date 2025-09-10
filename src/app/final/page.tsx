@@ -1,7 +1,7 @@
 // app/dashboard/page.tsx
 "use client";
 
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Image from "next/image";
 import HiteSummaryCard from "@/components/dashboard/HiteSummaryCard";
@@ -16,7 +16,7 @@ import {
 
 type StepAvail = Exclude<StepState, "locked">;
 
-export default function DashboardDemoInner() {
+function DashboardContent() {
     const router = useRouter();
     const searchParams = useSearchParams();
     const showDiscoverOnly = searchParams.get("view") === "discover";
@@ -283,8 +283,28 @@ export default function DashboardDemoInner() {
                     </div>
                 </div>
             </div>
-
-
         </div>
+    );
+}
+
+function LoadingDashboard() {
+    return (
+        <div className='absolute inset-0 flex items-center justify-center'>
+            <div
+                className="absolute inset-0 bg-cover bg-center"
+                style={{ backgroundImage: `url('/quiz-bg.png')` }}
+            />
+            <div className='relative z-10 text-white'>
+                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-white"></div>
+            </div>
+        </div>
+    );
+}
+
+export default function DashboardPage() {
+    return (
+        <Suspense fallback={<LoadingDashboard />}>
+            <DashboardContent />
+        </Suspense>
     );
 }
