@@ -36,7 +36,7 @@ export default function ModalPage() {
                             <Image src="/lock1.png" alt="Unlock Icon" width={190} height={190} className="object-contain" />
                         </div>
 
-                        <Button onClick={handleGoToTrain} className="w-full max-w-[320px]">
+                        <Button onClick={handleGoToTrain} className="w-full">
                             Go to Train
                         </Button>
                     </div>

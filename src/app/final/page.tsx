@@ -257,8 +257,9 @@ function DashboardContent() {
 
                         {/* Coach's Corner */}
                         <section style={{ marginBottom: 32 }}>
-                            <h3 className='text-2xl font-bold mb-4'>Coach&apos;s Corner</h3>
-                            <div
+                            <div className="flex items-center w-full mb-4 gap-1.5"> <h3 className='text-2xl font-bold'>Coach&apos;s Corner</h3>
+                                <Image src={'/checkbox.svg'} alt='Checkbox' width={30} height={30} />
+                            </div> <div
                                 className='rounded-2xl p-6 bg-gradient-to-br from-[#151029] to-[#2a1630] border border-white/10 shadow-lg'
                                 style={{ minHeight: 160 }}
                             >
