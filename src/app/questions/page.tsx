@@ -13,7 +13,9 @@ export default function QuestionsPage() {
 
   const handleThemeSelect = (theme: string) => {
     setSelectedTheme(theme);
-    setCurrentSlide(2);
+    if (theme === 'Self Confidence') {
+      setCurrentSlide(2);
+    }
   };
 
   const handleLevelSelect = (level: number) => {
@@ -75,7 +77,7 @@ export default function QuestionsPage() {
                 <div className="flex-1 flex flex-col gap-3">
                   <button
                     onClick={() => handleThemeSelect('Self Confidence')}
-                    className="w-full flex items-center justify-center h-[60px] bg-[#FFFFFF0A] active:bg-[#FFFFFF26] border border-[#FFFFFF33] rounded-[30px] text-white transition-all"
+                    className="w-full flex items-center justify-center h-[60px] bg-[#FFFFFF26] active:bg-[#FFFFFF26] border border-[#FFFFFF33] rounded-[30px] text-white transition-all"
                   >
                     <span className="text-[18px] font-medium">Self Confidence</span>
                   </button>
@@ -120,12 +122,12 @@ export default function QuestionsPage() {
                     className="w-full flex items-center px-[15px] h-[60px] bg-[#FFFFFF0A] active:bg-[#FFFFFF26] border border-[#FFFFFF33] rounded-[30px] text-white transition-all"
 
                   >
-                    <span className="w-[28px] h-[28px] inline-flex items-center justify-center bg-[#353535] rounded-full mr-2.5 font-bold text-[14px] text-[#FFFFFF80]">4</span><span className="text-[16px] text-white">I'm feeling more confident in myself lately.</span>
+                    <span className="w-[28px] h-[28px] inline-flex items-center justify-center bg-[#353535] rounded-full mr-2.5 font-bold text-[14px] text-[#FFFFFF80]">4</span><span className="text-[16px] text-left text-white">I'm feeling more confident in myself lately.</span>
                   </button>
 
                   <button
                     onClick={() => handleLevelSelect(3)}
-                    className="w-full flex items-center px-[15px] h-[60px] bg-[#FFFFFF0A] active:bg-[#FFFFFF26] border border-[#FFFFFF33] rounded-[30px] text-white transition-all"
+                    className="w-full flex items-center px-[15px] h-[60px] bg-[#FFFFFF26] active:bg-[#FFFFFF26] border border-[#FFFFFF33] rounded-[30px] text-white transition-all"
                   >
                     <span className="w-[28px] h-[28px] inline-flex items-center justify-center bg-[#353535] rounded-full mr-2.5 font-bold text-[14px] text-[#FFFFFF80]">3</span><span className="text-[16px] text-white">Some belief is there, but it's not steady.</span>
                   </button>
@@ -167,7 +169,7 @@ export default function QuestionsPage() {
 
                   <button
                     onClick={() => handleReasonSelect('I\'m feeling off or unmotivated.')}
-                    className="w-full flex items-center justify-center h-[60px] bg-[#FFFFFF0A] active:bg-[#FFFFFF26] border border-[#FFFFFF33] rounded-[30px] text-white transition-all"
+                    className="w-full flex items-center justify-center h-[60px] bg-[#FFFFFF26] active:bg-[#FFFFFF26] border border-[#FFFFFF33] rounded-[30px] text-white transition-all"
 
                   >
                     <span className="text-[16px]">I'm feeling off or unmotivated.</span>
