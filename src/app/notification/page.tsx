@@ -24,7 +24,7 @@ export default function NotificationPage() {
     const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
 
     return (
-        <div className={"w-full h-full flex justify-center min-h-screen flex-col items-center " + inter.className}>
+        <div className={"w-full h-full flex justify-center min-h-screen flex-col items-center select-none" + inter.className}>
             <div className="max-w-md w-full flex flex-col flex-1 relative overflow-hidden">
                 <div className="flex flex-col items-center pt-6">
                     <span className="text-[20px] text-white font-medium tracking-[-4%]">{dateStr}</span>
