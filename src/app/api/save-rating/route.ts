@@ -71,12 +71,12 @@ export async function POST(request: NextRequest) {
       console.log('Document loaded:', doc.title);
 
       // Get or create the ratings sheet
-      let sheet = doc.sheetsByTitle['Ratings'];
+      let sheet = doc.sheetsByTitle['DTE-2'];
       
       if (!sheet) {
-        console.log('Creating new Ratings sheet...');
+        console.log('Creating new DTE-2 sheet...');
         sheet = await doc.addSheet({
-          title: 'Ratings',
+          title: 'DTE-2',
           headerValues: [
             'Timestamp',
             'Helpful Rating',
@@ -89,7 +89,7 @@ export async function POST(request: NextRequest) {
         });
         console.log('New sheet created');
       } else {
-        console.log('Using existing Ratings sheet');
+        console.log('Using existing DTE-2 sheet');
         // Load headers to ensure they exist
         await sheet.loadHeaderRow();
       }
