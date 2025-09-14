@@ -277,7 +277,7 @@ const Timer: React.FC<TimerProps> = ({
         breathTLRef.current = null;
 
         // === DING ===
-      //  playDing();
+        //  playDing();
 
         onComplete?.();
         return;
@@ -369,7 +369,7 @@ const Timer: React.FC<TimerProps> = ({
           breathTLRef.current = null;
 
           // === DING ===
-         // playDing();
+          // playDing();
 
           onComplete?.();
           return;
@@ -439,60 +439,60 @@ const Timer: React.FC<TimerProps> = ({
     <>
       <div className={twMerge("block", className)} style={{ width: size }}>
         {/* Фиксированная область круга */}
-        <div className='relative' style={{ width: size, height: size }}>
-          <svg width={size} height={size} className='block'>
+        <div className="relative" style={{ width: size, height: size }}>
+          <svg width={size} height={size} className="block">
             {/* фон дорожки */}
             <circle
               cx={size / 2}
               cy={size / 2}
               r={radius}
-              fill='none'
-              stroke='rgba(255,255,255,0.28)'
+              fill="none"
+              stroke="rgba(255,255,255,0.28)"
               strokeWidth={strokeWidth}
             />
 
             {/* градиенты + маска */}
             <defs>
               <linearGradient
-                id='progressGradient'
-                x1='0%'
-                y1='0%'
-                x2='0%'
-                y2='100%'
+                id="progressGradient"
+                x1="0%"
+                y1="0%"
+                x2="0%"
+                y2="100%"
               >
-                <stop offset='0%' stopColor='#7766DA' />
-                <stop offset='100%' stopColor='#5241B7' />
+                <stop offset="0%" stopColor="#7766DA" />
+                <stop offset="100%" stopColor="#5241B7" />
               </linearGradient>
 
               <linearGradient
-                id='timerGradient'
-                x1='0%'
-                y1='0%'
-                x2='100%'
-                y2='0%'
+                id="timerGradient"
+                x1="0%"
+                y1="0%"
+                x2="100%"
+                y2="0%"
               >
-                <stop offset='0%' stopColor='#60A5FA' />
-                <stop offset='100%' stopColor='#1E40AF' />
+                <stop offset="0%" stopColor="#60A5FA" />
+                <stop offset="100%" stopColor="#1E40AF" />
               </linearGradient>
 
               <mask
-                id='eraseMask'
-                maskUnits='userSpaceOnUse'
-                maskContentUnits='userSpaceOnUse'
+                id="eraseMask"
+                maskUnits="userSpaceOnUse"
+                maskContentUnits="userSpaceOnUse"
               >
-                <rect width={size} height={size} fill='white' />
+                <rect width={size} height={size} fill="white" />
                 <circle
                   ref={eraseMaskStrokeRef}
                   cx={size / 2}
                   cy={size / 2}
                   r={radius}
-                  fill='none'
-                  stroke='black'
+                  fill="none"
+                  stroke="black"
                   strokeWidth={strokeWidth}
                   strokeDasharray={`0 ${circumference}`}
                   strokeDashoffset={0}
                   transform={`rotate(-90 ${size / 2} ${size / 2})`}
-                  strokeLinecap='butt'
+                  strokeLinecap="butt"
                 />
               </mask>
             </defs>
@@ -504,7 +504,7 @@ const Timer: React.FC<TimerProps> = ({
                 cx={size / 2}
                 cy={size / 2}
                 r={radius * breathMinRatio}
-                fill='url(#timerGradient)'
+                fill="url(#timerGradient)"
                 opacity={0.95}
               />
             )}
@@ -516,35 +516,35 @@ const Timer: React.FC<TimerProps> = ({
                 cx={size / 2}
                 cy={size / 2}
                 r={radius}
-                fill='none'
-                stroke='url(#progressGradient)'
+                fill="none"
+                stroke="url(#progressGradient)"
                 strokeWidth={strokeWidth}
                 strokeDasharray={`0 ${circumference}`}
                 strokeDashoffset={0}
                 transform={`rotate(-90 ${size / 2} ${size / 2})`}
-                strokeLinecap='round'
-                mask='url(#eraseMask)'
+                strokeLinecap="round"
+                mask="url(#eraseMask)"
               />
             )}
 
             {/* метки */}
-            <g fill='#FFFFFF'>
-              <rect x={size / 2 - 2} y={0} width='4' height='24' rx='2' />
+            <g fill="#FFFFFF">
+              <rect x={size / 2 - 2} y={0} width="4" height="24" rx="2" />
               <rect
                 x={size - 24}
                 y={size / 2 - 2}
-                width='24'
-                height='4'
-                rx='2'
+                width="24"
+                height="4"
+                rx="2"
               />
               <rect
                 x={size / 2 - 2}
                 y={size - 24}
-                width='4'
-                height='24'
-                rx='2'
+                width="4"
+                height="24"
+                rx="2"
               />
-              <rect x={0} y={size / 2 - 2} width='24' height='4' rx='2' />
+              <rect x={0} y={size / 2 - 2} width="24" height="4" rx="2" />
             </g>
 
             {/* бегущая точка */}
@@ -553,8 +553,8 @@ const Timer: React.FC<TimerProps> = ({
                 ref={progressDotRef}
                 cx={size / 2}
                 cy={size / 2 - radius}
-                r='12'
-                fill='#FFFFFF'
+                r="12"
+                fill="#FFFFFF"
               />
             )}
           </svg>
@@ -562,16 +562,16 @@ const Timer: React.FC<TimerProps> = ({
           {/* центр — поверх круга */}
           <div
             ref={overlayRef}
-            className='absolute inset-0 flex items-center justify-center'
+            className="absolute inset-0 flex items-center justify-center"
           >
             {state === "initial" ? (
               <StartButton ref={buttonRef} onClick={handleStart} />
             ) : (
               <button
                 ref={buttonRef}
-                type='button'
+                type="button"
                 onClick={() => void 0}
-                className='bg-transparent rounded-full w-[180px] h-[180px] grid place-items-center select-none'
+                className="bg-transparent rounded-full w-[180px] h-[180px] grid place-items-center select-none"
               >
                 <span className="text-white text-center font-['DM_Sans',sans-serif] text-[40px] leading-[52px] tracking-[2.23602px] font-bold tabular-nums">
                   {mmss}
@@ -583,68 +583,68 @@ const Timer: React.FC<TimerProps> = ({
       </div>
 
       {state !== "initial" && (
-        <div className='pointer-events-auto -mt-1 flex items-center justify-between gap-4 w-full'>
+        <div className="pointer-events-auto -mt-1 flex items-center justify-between gap-4 w-full">
           {/* Стоп */}
           <button
-            type='button'
+            type="button"
             onClick={handleStop}
-            aria-label='Стоп'
-            className='p-0 bg-transparent border-0'
+            aria-label="Стоп"
+            className="p-0 bg-transparent border-0"
           >
             <svg
-              width='80'
-              height='80'
-              viewBox='0 0 80 80'
-              fill='none'
-              xmlns='http://www.w3.org/2000/svg'
+              width="80"
+              height="80"
+              viewBox="0 0 80 80"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <circle cx='40' cy='40' r='40' fill='white' />
+              <circle cx="40" cy="40" r="40" fill="white" />
               <path
-                d='M45 30H35C32.2386 30 30 32.2386 30 35V45C30 47.7614 32.2386 50 35 50H45C47.7614 50 50 47.7614 50 45V35C50 32.2386 47.7614 30 45 30Z'
-                fill='black'
+                d="M45 30H35C32.2386 30 30 32.2386 30 35V45C30 47.7614 32.2386 50 35 50H45C47.7614 50 50 47.7614 50 45V35C50 32.2386 47.7614 30 45 30Z"
+                fill="black"
               />
             </svg>
           </button>
 
           {/* Пауза / Продолжить */}
           <button
-            type='button'
+            type="button"
             onClick={handlePauseResume}
             aria-label={isPaused ? "Продолжить" : "Пауза"}
-            className='p-0 bg-transparent border-0'
+            className="p-0 bg-transparent border-0"
           >
             {isPaused ? (
               // PLAY
               <svg
-                width='80'
-                height='80'
-                viewBox='0 0 80 80'
-                fill='none'
-                xmlns='http://www.w3.org/2000/svg'
+                width="80"
+                height="80"
+                viewBox="0 0 80 80"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
               >
-                <circle cx='40' cy='40' r='40' fill='white' />
+                <circle cx="40" cy="40" r="40" fill="white" />
                 <path
-                  d='M46.3566 33.8045C50.1189 36.4351 52 37.7505 52 40.0001C52 42.2497 50.1189 43.5651 46.3566 46.1957C45.3181 46.9219 44.288 47.6056 43.3414 48.1753C42.511 48.6752 41.5705 49.1922 40.5968 49.6997C36.8434 51.6561 34.9667 52.6343 33.2835 51.5513C31.6003 50.4683 31.4473 48.201 31.1413 43.6666C31.0548 42.3842 31 41.1271 31 40.0001C31 38.8731 31.0548 37.616 31.1413 36.3336C31.4473 31.7992 31.6003 29.5319 33.2835 28.4489C34.9667 27.3659 36.8434 28.3441 40.5968 30.3005C41.5705 30.808 42.511 31.325 43.3414 31.8249C44.288 32.3946 45.3181 33.0783 46.3566 33.8045Z'
-                  fill='black'
+                  d="M46.3566 33.8045C50.1189 36.4351 52 37.7505 52 40.0001C52 42.2497 50.1189 43.5651 46.3566 46.1957C45.3181 46.9219 44.288 47.6056 43.3414 48.1753C42.511 48.6752 41.5705 49.1922 40.5968 49.6997C36.8434 51.6561 34.9667 52.6343 33.2835 51.5513C31.6003 50.4683 31.4473 48.201 31.1413 43.6666C31.0548 42.3842 31 41.1271 31 40.0001C31 38.8731 31.0548 37.616 31.1413 36.3336C31.4473 31.7992 31.6003 29.5319 33.2835 28.4489C34.9667 27.3659 36.8434 28.3441 40.5968 30.3005C41.5705 30.808 42.511 31.325 43.3414 31.8249C44.288 32.3946 45.3181 33.0783 46.3566 33.8045Z"
+                  fill="black"
                 />
               </svg>
             ) : (
               // PAUSE
               <svg
-                width='80'
-                height='80'
-                viewBox='0 0 80 80'
-                fill='none'
-                xmlns='http://www.w3.org/2000/svg'
+                width="80"
+                height="80"
+                viewBox="0 0 80 80"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
               >
-                <circle cx='40' cy='40' r='40' fill='white' />
+                <circle cx="40" cy="40" r="40" fill="white" />
                 <path
-                  d='M37.4 51H32.6C32.1757 51 31.7687 50.8946 31.4686 50.7071C31.1686 50.5196 31 50.2652 31 50V30C31 29.7348 31.1686 29.4804 31.4686 29.2929C31.7687 29.1054 32.1757 29 32.6 29H37.4C37.8243 29 38.2313 29.1054 38.5314 29.2929C38.8314 29.4804 39 29.7348 39 30V50C39 50.2652 38.8314 50.5196 38.5314 50.7071C38.2313 50.8946 37.8243 51 37.4 51Z'
-                  fill='black'
+                  d="M37.4 51H32.6C32.1757 51 31.7687 50.8946 31.4686 50.7071C31.1686 50.5196 31 50.2652 31 50V30C31 29.7348 31.1686 29.4804 31.4686 29.2929C31.7687 29.1054 32.1757 29 32.6 29H37.4C37.8243 29 38.2313 29.1054 38.5314 29.2929C38.8314 29.4804 39 29.7348 39 30V50C39 50.2652 38.8314 50.5196 38.5314 50.7071C38.2313 50.8946 37.8243 51 37.4 51Z"
+                  fill="black"
                 />
                 <path
-                  d='M47.4 51H42.6C42.1757 51 41.7687 50.8946 41.4686 50.7071C41.1686 50.5196 41 50.2652 41 50V30C31 29.7348 41.1686 29.4804 41.4686 29.2929C41.7687 29.1054 42.1757 29 42.6 29H47.4C47.8243 29 48.2313 29.1054 48.5314 29.2929C48.8314 29.4804 49 29.7348 49 30V50C49 50.2652 48.8314 50.5196 48.5314 50.7071C48.2313 50.8946 47.8243 51 47.4 51Z'
-                  fill='black'
+                  d="M47.4 51H42.6C42.1757 51 41.7687 50.8946 41.4686 50.7071C41.1686 50.5196 41 50.2652 41 50V30C31 29.7348 41.1686 29.4804 41.4686 29.2929C41.7687 29.1054 42.1757 29 42.6 29H47.4C47.8243 29 48.2313 29.1054 48.5314 29.2929C48.8314 29.4804 49 29.7348 49 30V50C49 50.2652 48.8314 50.5196 48.5314 50.7071C48.2313 50.8946 47.8243 51 47.4 51Z"
+                  fill="black"
                 />
               </svg>
             )}

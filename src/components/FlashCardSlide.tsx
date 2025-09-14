@@ -9,7 +9,7 @@ import SwipeIcon from "./icons/SwipeIcon";
 import BackButton from "./ui/BackButton";
 import BookmarkButton from "./ui/BookmarkButton";
 import TextArea from "./ui/TextArea";
-import Timer from "./Timer";
+import Timer from "./timer/Timer";
 import Swiper from "swiper";
 import AudioWave from "./AudioWave";
 import Button from "./ui/Button";
@@ -315,8 +315,7 @@ export default function FlashCardSlide({
           </div>
         )}
 
-        {/* ===== TIMER ===== */}
-        {card.type === "timer" && (
+       {card.type === "timer" && (
           <div className='w-full h-full'>
             <div className='flex flex-col space-y-4 mb-12'>
               <Counter count={index} length={cardsLength} />
@@ -327,8 +326,9 @@ export default function FlashCardSlide({
               )}
               {card.content && <p className='text-white'>{card.content}</p>}
             </div>
-            <div className='flex justify-center'>
-              <Timer timer={60} className='mx-auto' />
+
+            <div className='flex-col items-center justify-center'>
+              <Timer  timer={60} className='mx-auto' />
             </div>
           </div>
         )}

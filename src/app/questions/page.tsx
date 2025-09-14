@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
@@ -13,9 +13,7 @@ export default function QuestionsPage() {
 
   const handleThemeSelect = (theme: string) => {
     setSelectedTheme(theme);
-    if (theme === 'Self Confidence') {
-      setCurrentSlide(2);
-    }
+    setCurrentSlide(2);
   };
 
   const handleLevelSelect = (level: number) => {
@@ -26,16 +24,16 @@ export default function QuestionsPage() {
   };
 
   const handleReasonSelect = (reason: string) => {
-    if (reason === "I\'m under a lot of pressure right now.") {
+    if (reason === "I'm under a lot of pressure right now.") {
       setSelectedReason(reason);
       // Navigate to modal after completing all questions
-      router.push('/modal');
+      router.push("/modal");
     }
   };
 
   const handleBack = () => {
     if (currentSlide === 1) {
-      router.push('/notification');
+      router.push("/notification");
     } else {
       setCurrentSlide(currentSlide - 1);
     }
@@ -51,10 +49,9 @@ export default function QuestionsPage() {
 
         <div className="relative z-10 h-dvh px-4 pt-[1rem] pb-[3.125rem]">
           <div className="h-full w-full flex flex-col">
-
-            <div className='flex gap-[0.938rem] mb-[3.375rem] items-center'>
+            <div className="flex gap-[0.938rem] mb-[3.375rem] items-center">
               <BackButton onClick={handleBack} />
-              <span className='font-bold text-2xl'>Discover</span>
+              <span className="font-bold text-2xl">Discover</span>
             </div>
 
             {/* Progress Bar */}
@@ -71,29 +68,37 @@ export default function QuestionsPage() {
             {currentSlide === 1 && (
               <div className="flex-1 flex flex-col">
                 <div className="mb-[30px] min-h-[44px] mt-[30px]">
-                  <h2 className="text-[20px] leading-[24px] font-medium text-white">What do you want to focus on today?</h2>
+                  <h2 className="text-[20px] leading-[24px] font-medium text-white">
+                    What do you want to focus on today?
+                  </h2>
                 </div>
 
                 <div className="flex-1 flex flex-col gap-3">
                   <button
-                    onClick={() => handleThemeSelect('Self Confidence')}
-                    className="w-full flex items-center justify-center h-[60px] bg-[#FFFFFF26] active:bg-[#FFFFFF26] border border-[#FFFFFF33] rounded-[30px] text-white transition-all"
+                    onClick={() => handleThemeSelect("Self Confidence")}
+                    className="w-full flex items-center justify-center h-[60px] bg-[#FFFFFF0A] active:bg-[#FFFFFF26] border border-[#FFFFFF33] rounded-[30px] text-white transition-all"
                   >
-                    <span className="text-[18px] font-medium">Self Confidence</span>
+                    <span className="text-[18px] font-medium">
+                      Self Confidence
+                    </span>
                   </button>
 
                   <button
-                    onClick={() => handleThemeSelect('Inner Strength')}
+                    onClick={() => handleThemeSelect("Inner Strength")}
                     className="w-full flex items-center justify-center h-[60px] bg-[#FFFFFF0A] active:bg-[#FFFFFF26] border border-[#FFFFFF33] rounded-[30px] text-white transition-all"
                   >
-                    <span className="text-[18px] font-medium">Inner Strength</span>
+                    <span className="text-[18px] font-medium">
+                      Inner Strength
+                    </span>
                   </button>
 
                   <button
-                    onClick={() => handleThemeSelect('Mental Toughness')}
+                    onClick={() => handleThemeSelect("Mental Toughness")}
                     className="w-full flex items-center justify-center h-[60px] bg-[#FFFFFF0A] active:bg-[#FFFFFF26] border border-[#FFFFFF33] rounded-[30px] text-white transition-all"
                   >
-                    <span className="text-[18px] font-medium">Mental Toughness</span>
+                    <span className="text-[18px] font-medium">
+                      Mental Toughness
+                    </span>
                   </button>
                 </div>
               </div>
@@ -104,7 +109,8 @@ export default function QuestionsPage() {
               <div className="flex-1 flex flex-col">
                 <div className="mb-[30px] min-h-[44px] mt-[30px]">
                   <h2 className="text-[20px] leading-[24px] font-medium text-white">
-                    How are you feeling about your Self Confidence today? (for the purpose of this demo, select something 3 or below)
+                    How are you feeling about your Self Confidence today? (for
+                    the purpose of this demo, select something 3 or below)
                   </h2>
                 </div>
 
@@ -112,38 +118,61 @@ export default function QuestionsPage() {
                   <button
                     onClick={() => handleLevelSelect(5)}
                     className="w-full flex items-center px-[15px] h-[60px] bg-[#FFFFFF0A] active:bg-[#FFFFFF26] border border-[#FFFFFF33] rounded-[30px] text-white transition-all"
-
                   >
-                    <span className="w-[28px] h-[28px] inline-flex items-center justify-center bg-[#353535] rounded-full mr-2.5 font-bold text-[14px] text-[#FFFFFF80]">5</span><span className="text-[16px] text-white">My self-belief is on fire today.</span>
+                    <span className="w-[28px] h-[28px] inline-flex items-center justify-center bg-[#353535] rounded-full mr-2.5 font-bold text-[14px] text-[#FFFFFF80]">
+                      5
+                    </span>
+                    <span className="text-[16px] text-white">
+                      My self-belief is on fire today.
+                    </span>
                   </button>
 
                   <button
                     onClick={() => handleLevelSelect(4)}
                     className="w-full flex items-center px-[15px] h-[60px] bg-[#FFFFFF0A] active:bg-[#FFFFFF26] border border-[#FFFFFF33] rounded-[30px] text-white transition-all"
-
                   >
-                    <span className="w-[28px] h-[28px] inline-flex items-center justify-center bg-[#353535] rounded-full mr-2.5 font-bold text-[14px] text-[#FFFFFF80]">4</span><span className="text-[16px] text-left text-white">I'm feeling more confident in myself lately.</span>
+                    <span className="w-[28px] h-[28px] inline-flex items-center justify-center bg-[#353535] rounded-full mr-2.5 font-bold text-[14px] text-[#FFFFFF80]">
+                      4
+                    </span>
+                    <span className="text-[16px] text-left text-white">
+                      I'm feeling more confident in myself lately.
+                    </span>
                   </button>
 
                   <button
                     onClick={() => handleLevelSelect(3)}
                     className="w-full flex items-center px-[15px] h-[60px] bg-[#FFFFFF26] active:bg-[#FFFFFF26] border border-[#FFFFFF33] rounded-[30px] text-white transition-all"
                   >
-                    <span className="w-[28px] h-[28px] inline-flex items-center justify-center bg-[#353535] rounded-full mr-2.5 font-bold text-[14px] text-[#FFFFFF80]">3</span><span className="text-[16px] text-white">Some belief is there, but it's not steady.</span>
+                    <span className="w-[28px] h-[28px] inline-flex items-center justify-center bg-[#353535] rounded-full mr-2.5 font-bold text-[14px] text-[#FFFFFF80]">
+                      3
+                    </span>
+                    <span className="text-[16px] text-left text-white">
+                      Some belief is there, but it's not steady.
+                    </span>
                   </button>
 
                   <button
                     onClick={() => handleLevelSelect(2)}
                     className="w-full flex px-[15px] items-center h-[60px] bg-[#FFFFFF0A] active:bg-[#FFFFFF26] border border-[#FFFFFF33] rounded-[30px] text-white transition-all"
                   >
-                    <span className="w-[28px] h-[28px] inline-flex items-center justify-center bg-[#353535] rounded-full mr-2.5 font-bold text-[14px] text-[#FFFFFF80]">2</span><span className="text-[16px] text-white">I've been second-guessing myself a lot.</span>
+                    <span className="w-[28px] h-[28px] inline-flex items-center justify-center bg-[#353535] rounded-full mr-2.5 font-bold text-[14px] text-[#FFFFFF80]">
+                      2
+                    </span>
+                    <span className="text-[16px] text-white">
+                      I've been second-guessing myself a lot.
+                    </span>
                   </button>
 
                   <button
                     onClick={() => handleLevelSelect(1)}
                     className="w-full flex items-center px-[15px] h-[60px] bg-[#FFFFFF0A] active:bg-[#FFFFFF26] border border-[#FFFFFF33] rounded-[30px] text-white transition-all"
                   >
-                    <span className="w-[28px] h-[28px] inline-flex items-center justify-center bg-[#353535] rounded-full mr-2.5 font-bold text-[14px] text-[#FFFFFF80]">1</span><span className="text-[16px] text-white">I'm barely trusting my abilities right now.</span>
+                    <span className="w-[28px] h-[28px] inline-flex items-center justify-center bg-[#353535] rounded-full mr-2.5 font-bold text-[14px] text-[#FFFFFF80]">
+                      1
+                    </span>
+                    <span className="text-[16px] text-white">
+                      I'm barely trusting my abilities right now.
+                    </span>
                   </button>
                 </div>
               </div>
@@ -154,53 +183,73 @@ export default function QuestionsPage() {
               <div className="flex-1 flex flex-col">
                 <div className="mb-[30px] min-h-[44px] mt-[30px]">
                   <h2 className="text-[20px] leading-[24px] font-medium text-white">
-                    What’s getting in the way of stronger Self Belief today? (for the purpose of this demo, select unmotivated)
+                    What’s getting in the way of stronger Self Belief today?
+                    (for the purpose of this demo, select unmotivated)
                   </h2>
                 </div>
 
                 <div className="flex-1 flex flex-col gap-3">
                   <button
-                    onClick={() => handleReasonSelect('I just suffered a setback.')}
+                    onClick={() =>
+                      handleReasonSelect("I just suffered a setback.")
+                    }
                     className="w-full flex items-center justify-center h-[60px] bg-[#FFFFFF0A] active:bg-[#FFFFFF26] border border-[#FFFFFF33] rounded-[30px] text-white transition-all"
-
                   >
-                    <span className="text-[16px]">I just suffered a setback.</span>
+                    <span className="text-[16px]">
+                      I just suffered a setback.
+                    </span>
                   </button>
 
                   <button
-                    onClick={() => handleReasonSelect('I\'m feeling off or unmotivated.')}
+                    onClick={() =>
+                      handleReasonSelect("I'm feeling off or unmotivated.")
+                    }
                     className="w-full flex items-center justify-center h-[60px] bg-[#FFFFFF0A] active:bg-[#FFFFFF26] border border-[#FFFFFF33] rounded-[30px] text-white transition-all"
-
                   >
-                    <span className="text-[16px]">I'm feeling off or unmotivated.</span>
+                    <span className="text-[16px]">
+                      I'm feeling off or unmotivated.
+                    </span>
                   </button>
 
                   <button
-                    onClick={() => handleReasonSelect('I\'m under a lot of pressure right now.')}
+                    onClick={() =>
+                      handleReasonSelect(
+                        "I'm under a lot of pressure right now."
+                      )
+                    }
                     className="w-full flex items-center justify-center h-[60px] bg-[#FFFFFF26] active:bg-[#FFFFFF26] border border-[#FFFFFF33] rounded-[30px] text-white transition-all"
                   >
-                    <span className="text-[16px] ">I'm under a lot of pressure right now.</span>
+                    <span className="text-[16px] ">
+                      I'm under a lot of pressure right now.
+                    </span>
                   </button>
 
                   <button
-                    onClick={() => handleReasonSelect('I\'m not where I want to be.')}
+                    onClick={() =>
+                      handleReasonSelect("I'm not where I want to be.")
+                    }
                     className="w-full flex items-center justify-center h-[60px] bg-[#FFFFFF0A] active:bg-[#FFFFFF26] border border-[#FFFFFF33] rounded-[30px] text-white transition-all"
-
                   >
-                    <span className="text-[16px]">I'm not where I want to be.</span>
+                    <span className="text-[16px]">
+                      I'm not where I want to be.
+                    </span>
                   </button>
 
                   <button
-                    onClick={() => handleReasonSelect('I\'m frustrated with people around me.')}
+                    onClick={() =>
+                      handleReasonSelect(
+                        "I'm frustrated with people around me."
+                      )
+                    }
                     className="w-full flex items-center justify-center h-[60px] bg-[#FFFFFF0A] active:bg-[#FFFFFF26] border border-[#FFFFFF33] rounded-[30px] text-white transition-all"
-
                   >
-                    <span className="text-[16px]">I'm frustrated with people around me.</span>
+                    <span className="text-[16px]">
+                      I'm frustrated with people around me.
+                    </span>
                   </button>
                 </div>
               </div>
             )}
-
           </div>
         </div>
       </div>
