@@ -26,7 +26,7 @@ export default function QuestionsPage() {
   };
 
   const handleReasonSelect = (reason: string) => {
-    if (reason === "I\'m feeling off or unmotivated.") {
+    if (reason === "I\'m under a lot of pressure right now.") {
       setSelectedReason(reason);
       // Navigate to modal after completing all questions
       router.push('/modal');
@@ -169,7 +169,7 @@ export default function QuestionsPage() {
 
                   <button
                     onClick={() => handleReasonSelect('I\'m feeling off or unmotivated.')}
-                    className="w-full flex items-center justify-center h-[60px] bg-[#FFFFFF26] active:bg-[#FFFFFF26] border border-[#FFFFFF33] rounded-[30px] text-white transition-all"
+                    className="w-full flex items-center justify-center h-[60px] bg-[#FFFFFF0A] active:bg-[#FFFFFF26] border border-[#FFFFFF33] rounded-[30px] text-white transition-all"
 
                   >
                     <span className="text-[16px]">I'm feeling off or unmotivated.</span>
@@ -177,7 +177,7 @@ export default function QuestionsPage() {
 
                   <button
                     onClick={() => handleReasonSelect('I\'m under a lot of pressure right now.')}
-                    className="w-full flex items-center justify-center h-[60px] bg-[#FFFFFF0A] active:bg-[#FFFFFF26] border border-[#FFFFFF33] rounded-[30px] text-white transition-all"
+                    className="w-full flex items-center justify-center h-[60px] bg-[#FFFFFF26] active:bg-[#FFFFFF26] border border-[#FFFFFF33] rounded-[30px] text-white transition-all"
                   >
                     <span className="text-[16px] ">I'm under a lot of pressure right now.</span>
                   </button>

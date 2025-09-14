@@ -9,8 +9,8 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Training Beat-1",
-  description: "A Progressive Web App for athletes",
+  title: "DTE-2",
+  description: "Rebuilding After A Confidence Dip",
   icons: {
     icon: [
       { url: "/web-app-manifest-192x192.png", sizes: "192x192" },
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: "TB-2",
+    title: "DTE-2",
   },
 };
 

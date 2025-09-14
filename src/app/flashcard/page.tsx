@@ -5,6 +5,8 @@ import PrefetchTranscripts from "@/components/PrefetchTranscripts";
 import { useRouter } from "next/navigation";
 import { useState, useMemo } from "react";
 
+
+
 // универсальный хелпер: проверка, что у объекта есть строковое поле K
 function hasString<K extends string>(
   obj: unknown,
@@ -48,19 +50,25 @@ export default function FlashcardPage() {
       },
       {
         id: "f3",
-        type: "audio",
-        title: "Rebuilding after a confidence dip Part 3",
-        content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.",
-        audioUrl: "/audio-3.m4a",
-        backgroundImage: "/video-bg.png",
-      },
-      {
-        id: "f4",
         type: "input",
         title: "What kind of pressure have you been feeling recently? ",
         content:
           "How has it affected your decisions, your energy, or your execution?'",
         backgroundImage: "/video-bg.png",
+      },
+      {
+        id: "f4",
+        type: "audio",
+        title: "Rebuilding after a confidence dip Part 3",
+        content: "",
+        audioUrl: "/audio-3.m4a",
+        backgroundImage: "/video-bg.png",
+      },
+      {
+        id: "f5",
+        type: "timer",
+        title:
+          "Use this time to stay still and breathe through the pressure. Focus only on your breath and the space you're in. Let the moment settle.",
       },
     ],
     []
@@ -87,33 +95,35 @@ export default function FlashcardPage() {
   );
 
   return (
-    <div className='w-full h-full flex justify-center'>
+    <div className="w-full h-full flex justify-center">
       <PrefetchTranscripts urls={audioUrls} />
 
-      <div className='min-h-screen max-w-md relative overflow-hidden'>
-        <div className='absolute inset-0'>
+      <div className="min-h-screen max-w-md relative overflow-hidden">
+        <div className="absolute inset-0">
           {flashcards.map((card) => (
             <div
               key={card.id}
-              className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ease-in-out ${card.backgroundImage === currentBgImage
-                ? "opacity-100"
-                : "opacity-0"
-                }`}
+              className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ease-in-out ${
+                card.backgroundImage === currentBgImage
+                  ? "opacity-100"
+                  : "opacity-0"
+              }`}
               style={{
-                backgroundImage: `url("${card.backgroundImage || "/video-bg.png"
-                  }")`,
+                backgroundImage: `url("${
+                  card.backgroundImage || "/video-bg.png"
+                }")`,
               }}
             />
           ))}
         </div>
 
-        <div className='z-10'>
-          <div className='h-screen flex flex-col'>
+        <div className="z-10">
+          <div className="h-screen flex flex-col">
             <Flashcards
               cards={flashcards}
               onComplete={handleComplete}
               onSlideChange={handleSlideChange}
-              className='flex-1'
+              className="flex-1"
             />
           </div>
         </div>

@@ -113,13 +113,64 @@ export default function FlashCardSlide({
   const [bookmarked, setBookmarked] = useState(false);
   const [paused, setPaused] = useState(true);
 
+  // ---------- общая логика карточки ----------
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
+  const isLast = index === cardsLength - 1;
+  const hasTyped = useMemo(
+    () => card.type === "input" && userInput.trim().length > 0,
+    [card.type, userInput]
+  );
+  const isActiveNow = isActive || swiper?.activeIndex === index;
+
+  // ---------- SWIPE UP detection ----------
+  const touchStartY = useRef<number>(0);
+  const slideRef = useRef<HTMLDivElement | null>(null);
+
+  const handleTouchStart = (e: TouchEvent) => {
+    touchStartY.current = e.touches[0].clientY;
+  };
+
+  const handleTouchEnd = (e: TouchEvent) => {
+    if (!isLast || !isActive) return;
+
+    const touchEndY = e.changedTouches[0].clientY;
+    const deltaY = touchStartY.current - touchEndY;
+    const minSwipeDistance = 50;
+
+    // Swipe up detected
+    if (deltaY > minSwipeDistance) {
+      // Navigate to modal-finish
+      window.dispatchEvent(new Event("flashcards:show-finish-modal"));
+      onComplete?.();
+    }
+  };
+
+  // Add touch event listeners
+  useEffect(() => {
+    const slideElement = slideRef.current;
+    if (!slideElement || !isLast) return;
+
+    slideElement.addEventListener("touchstart", handleTouchStart, {
+      passive: true,
+    });
+    slideElement.addEventListener("touchend", handleTouchEnd, { passive: true });
+
+    return () => {
+      slideElement.removeEventListener("touchstart", handleTouchStart);
+      slideElement.removeEventListener("touchend", handleTouchEnd);
+    };
+  }, [isLast, isActive]);
+
   const togglePlay = () => {
     const v = videoRef.current;
     if (!v) return;
     if (v.paused || v.ended) {
-      v.play()
+      v
+        .play()
         .then(() => setPaused(false))
-        .catch(() => { });
+        .catch(() => {});
     } else {
       v.pause();
       setPaused(true);
@@ -156,23 +207,12 @@ export default function FlashCardSlide({
     }
   }, [isActive, card.type]);
 
-  // ---------- общая логика карточки ----------
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
-
-  const isLast = index === cardsLength - 1;
-  const hasTyped = useMemo(
-    () => card.type === "input" && userInput.trim().length > 0,
-    [card.type, userInput]
-  );
-  const isActiveNow = isActive || swiper?.activeIndex === index;
-
   // флаг наличия фиксированной кнопки Submit (под неё поднимаем свайп-иконку)
   const showSubmit =
     card.type === "input" && hasTyped && isActiveNow && mounted;
 
   return (
-    <div className='h-full flex flex-col relative'>
+    <div ref={slideRef} className='h-full flex flex-col relative'>
       <BackButton
         onClick={() => {
           if (index > 0) swiper?.slidePrev();
