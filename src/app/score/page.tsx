@@ -186,7 +186,7 @@ function ScoreContent() {
   ]);
 
   const handleNext = () => {
-    // Use calculated target values instead of animated motion values
+    // Use calculated target values 
     const params = new URLSearchParams({
       hiteScore: targetValues.finalHiteScore.toString(),
       pointsEarned: targetValues.totalPoints.toString(),
